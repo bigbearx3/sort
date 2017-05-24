@@ -6,13 +6,14 @@
 import UIKit
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    private var myArr = [6, 5, 1, 10, 8, 2, 7]
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        var myArr = [6, 5, 1, 10, 8, 2, 7]
+        
         print(myArr)
-        Sorter.byInsertion(values: &myArr)
-        print(myArr)
+        let arr = Sorter.mergeSort(values: myArr, leftIndex: 0, rightIndex : myArr.count - 1)
+        print(arr)
         
         // Do any additional setup after loading the view, typically from a nib.
     }
