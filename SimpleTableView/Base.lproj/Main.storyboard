@@ -22,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TzF-Kr-f2B">
-                                <rect key="frame" x="0.0" y="44" width="375" height="571"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="542"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -35,15 +35,39 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="B05-hi-ZK8"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="fE7-o7-a5G"/>
+                                </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MaJ-k7-kCD">
-                                <rect key="frame" x="164" y="623" width="46" height="30"/>
+                                <rect key="frame" x="172" y="629" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Sort"/>
+                                <connections>
+                                    <action selector="stepByStep:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zci-po-RE4"/>
+                                </connections>
                             </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="WUE-I4-ujl">
+                                <rect key="frame" x="56" y="594" width="262" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Bubble"/>
+                                    <segment title="Insertion"/>
+                                    <segment title="Merge"/>
+                                </segments>
+                                <connections>
+                                    <action selector="reset:" destination="BYZ-38-t0r" eventType="valueChanged" id="Drf-gE-ekw"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <connections>
+                        <outlet property="buttonSort" destination="MaJ-k7-kCD" id="JhB-Cp-W8N"/>
+                        <outlet property="myTableView" destination="TzF-Kr-f2B" id="ZqX-ja-72t"/>
+                        <outlet property="switchTypeSort" destination="WUE-I4-ujl" id="A1h-1E-dfA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
