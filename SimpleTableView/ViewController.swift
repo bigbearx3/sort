@@ -20,7 +20,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     private func bubleSorting(){
         if !isSorted {
-            Sorter.bubbleSort(values: &myArr)
+            Sorter.bubbleSortVisual(values: &myArr)
             isSorted = true
         }
         if let state = Sorter.states.first{
@@ -40,7 +40,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     private func insertionSorting(){
         if !isSorted {
-            Sorter.insertionSort(values: &myArr)
+            Sorter.insertionSortVisual(values: &myArr)
             isSorted = true
         }
         if let state = Sorter.states.first{
@@ -58,7 +58,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             }
         }
         if !isSorted {
-            Sorter.mergeIterationSort(values: myArr)
+            Sorter.mergeIterationSortVisual(values: myArr)
             isSorted = true
             curentState = Sorter.statesMerge.first!
             myTableView.deleteSections(IndexSet([0]), with: .automatic)
@@ -88,7 +88,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(myArr)
+        var arr = myArr
+        print(arr)
+        
+        Sorter.mergeRecSort(values: &arr)
+        print(arr)
         // Do any additional setup after loading the view, typically from a nib.
     }
 
