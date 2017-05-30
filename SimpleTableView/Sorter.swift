@@ -155,26 +155,33 @@ class Sorter{
     }
     
     private static func mSort(arr : inout [Int] , lo : Int, hi : Int , buf : inout [Int]){
-        if hi <= lo { return }
-        let mid = lo + (hi - lo) / 2;
-        mSort(arr: &arr, lo: lo, hi: mid, buf: &buf)
-        mSort(arr: &arr, lo: mid + 1, hi: hi, buf : &buf)
-        buf = Array(arr[lo...hi])
-        //var temp = [Int]()
-        print(buf)
-        var pos1 = lo
-        var pos2 = mid + 1
-        var k = lo
-        while pos1 <= mid && pos2 <= hi{
-            if buf[pos1 - lo] < buf[pos2 - lo]{
-                arr[k] = buf[pos1 - lo]
-                pos1 += 1
-                k += 1
-            }else{
-                arr[k] = buf[pos2 - lo]
-                pos2 += 1
-                k += 1
+        if hi == lo { return }
+        else{
+            let mid = lo + (hi - lo) / 2;
+            mSort(arr: &arr, lo: lo, hi: mid, buf: &buf)
+            mSort(arr: &arr, lo: mid + 1, hi: hi, buf : &buf)
+            buf.removeAll()
+            var pos1 = lo
+            var pos2 = mid + 1
+            while pos1 <= mid && pos2 <= hi{
+                if arr[pos1] < arr[pos2]{
+                    buf.append(arr[pos1])
+                    pos1 += 1
+                }else{
+                    buf.append(arr[pos2])
+                    pos2 += 1
+                }
             }
+            while pos1 <= mid{
+                buf.append(arr[pos1])
+                pos1 += 1
+            }
+            while pos2 <= hi{
+                buf.append(arr[pos2])
+                pos2 += 1
+            }
+            print(buf)
+            arr[lo...hi] = buf[0...buf.count-1]
         }
     }
     

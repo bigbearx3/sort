@@ -64,7 +64,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             myTableView.deleteSections(IndexSet([0]), with: .automatic)
             isMergeSort = true
             myTableView.insertSections(IndexSet(0..<curentState.count), with: .automatic)
-            Sorter.statesMerge.removeFirst()        
+            Sorter.statesMerge.removeFirst()
         }else{
             if let first = Sorter.statesMerge.first{
                 myTableView.deleteSections(IndexSet(0..<curentState.count), with: .automatic)
@@ -73,7 +73,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 Sorter.statesMerge.removeFirst()
                 buttonSort.isEnabled = !Sorter.statesMerge.isEmpty
             }
-        }        
+        }
         myTableView.endUpdates()
     }
     
@@ -90,15 +90,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         super.viewDidLoad()
         var arr = myArr
         print(arr)
-        
         Sorter.mergeRecSort(values: &arr)
         print(arr)
-        // Do any additional setup after loading the view, typically from a nib.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
@@ -124,6 +121,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             return curentState[section].count
         }
         return myArr.count
-    }    
+    }
 }
 
